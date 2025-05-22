@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Button;
 import java.util.Optional;
 
 /**
@@ -21,7 +22,9 @@ public class ControleurLancerPartie implements EventHandler<ActionEvent> {
      * @param p vue du jeu
      */
     public ControleurLancerPartie(MotMystere modelePendu, Pendu vuePendu) {
-        // A implémenter
+        // A implémenter --> fait
+        this.modelePendu= modelePendu;
+        this.vuePendu= vuePendu;
     }
 
     /**
@@ -31,6 +34,7 @@ public class ControleurLancerPartie implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // A implémenter
+        Button boutonPartie= (Button) (event.getSource());
     
         Optional<ButtonType> reponse = this.vuePendu.popUpPartieEnCours().showAndWait(); // on lance la fenêtre popup et on attends la réponse
         // si la réponse est oui

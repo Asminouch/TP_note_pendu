@@ -16,7 +16,7 @@ public class ControleurChronometre implements EventHandler<ActionEvent> {
     /**
      * Vue du chronomètre
      */
-    private Chronometre chrono;
+    private Chronometre chrono;// appli
 
     /**
      * Constructeur du contrôleur du chronomètre
@@ -26,6 +26,9 @@ public class ControleurChronometre implements EventHandler<ActionEvent> {
      */
     public ControleurChronometre (Chronometre chrono){
         // A implémenter
+        this.chrono =chrono;
+        this.tempsEcoule=0;
+        this.tempsPrec=0;
 
     }
 
@@ -38,6 +41,9 @@ public class ControleurChronometre implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // A implémenter
+        // c'est pas un bouton
+        
+
     }
 
     /**
