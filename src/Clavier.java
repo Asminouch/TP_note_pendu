@@ -19,6 +19,10 @@ public class Clavier extends TilePane{
      */
     private List<Button> clavier;
 
+    //rajouter par moi
+    private EventHandler<ActionEvent> actionTouches;
+    private int tailleLigne;
+
     /**
      * constructeur du clavier
      * @param touches une chaine de caractères qui contient les lettres à mettre sur les touches
@@ -27,6 +31,10 @@ public class Clavier extends TilePane{
      */
     public Clavier(String touches, EventHandler<ActionEvent> actionTouches) {
         // A implémenter
+        this.clavier= touches;
+        this.actionTouches= actionTouches;
+        this.tailleLigne=8;
+        
     }
 
     /**

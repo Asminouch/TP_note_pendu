@@ -18,6 +18,7 @@ public class ControleurNiveau implements EventHandler<ActionEvent> {
      */
     public ControleurNiveau(MotMystere modelePendu) {
         // A implémenter
+        
     }
 
     /**
