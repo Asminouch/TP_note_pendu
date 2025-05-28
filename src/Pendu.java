@@ -184,28 +184,37 @@ public class Pendu extends Application {
         // A implémenter
         return null; // A enlever
     }
-
+//cours 4
     public Alert popUpPartieEnCours(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"La partie est en cours!\n Etes-vous sûr de l'interrompre ?", ButtonType.YES, ButtonType.NO);
         alert.setTitle("Attention");
+        alert.setHeaderText("Confirmation");
+        
         return alert;
     }
         
     public Alert popUpReglesDuJeu(){
         // A implementer
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        
         return alert;
     }
     
     public Alert popUpMessageGagne(){
         // A implementer
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION); 
+        alert.setTitle("Jeu du Pendu");
+        alert.setHeaderText("Vous avez gagné :)");
+        alert.setContentText("Bravo ! Vous avez gagné !");
         return alert;
     }
     
     public Alert popUpMessagePerdu(){
         // A implementer    
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Jeu du Pendu");
+        alert.setHeaderText("Vous avez perdu :(");
+        alert.setContentText("Vous avez perdu\nLe mot à trouver était "+ this.motCrypte);
         return alert;
     }
 
