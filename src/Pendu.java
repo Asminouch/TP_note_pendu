@@ -202,6 +202,7 @@ public class Pendu extends Application {
     
     public Alert popUpMessageGagne(){
         // A implementer
+        //fait
         Alert alert = new Alert(Alert.AlertType.INFORMATION); 
         alert.setTitle("Jeu du Pendu");
         alert.setHeaderText("Vous avez gagné :)");
@@ -210,7 +211,8 @@ public class Pendu extends Application {
     }
     
     public Alert popUpMessagePerdu(){
-        // A implementer    
+        // A implementer
+        //fait    
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Jeu du Pendu");
         alert.setHeaderText("Vous avez perdu :(");

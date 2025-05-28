@@ -34,10 +34,14 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent actionEvent) {// regarder en paralele controllancerpartie
-        // A implémenter
+        // A implémenter 
+        //getNbEssais() perdu()
         Button lettreBouton = (Button) (actionEvent.getSource());
         char lettre= lettreBouton.getText();
-        essaiLettre(lettre);
+        int nbApparition= essaiLettre(lettre);
+        if(getNbLettresRestantes()==0 ){ 
+        }
+
 
     }
 
