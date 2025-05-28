@@ -14,8 +14,8 @@ public class ControleurParametres{
     public void handle(ActionEvent event){
         Button button = (Button) (event.getSource());
         if (button.getText().contains("D"))
-            this.appli.afficheFenetre2();
+            this.pendu.afficheFenetre2();
         else 
-            this.appli.afficheFenetre1();
+            this.pendu.afficheFenetre1();
     }
 }
