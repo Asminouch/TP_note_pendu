@@ -19,13 +19,14 @@ public class ControleurParametres{
     public ControleurParametres(Pendu pendu){
         this.pendu =pendu;
     }
-    
-    @Override // code du tp3 controle connexion
+    // code du tp3 controle connexion
+
+    @Override 
     public void handle(ActionEvent event){
         Button button = (Button) (event.getSource());
-        if (button.getText().contains("Parametres"))
+        if (button.getText().contains("Parametres"))//parametre surment pas ecrit comme cca 
             {this.pendu.fenetreAccueil();}
         else 
-            {this.pendu.RetourAccueil();}
+            {this.pendu.fenetreJeu();}
     }
 }

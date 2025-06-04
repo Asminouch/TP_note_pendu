@@ -38,13 +38,12 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
         //getNbEssais() perdu()
         Button lettreBouton = (Button) (actionEvent.getSource());
         char lettre= lettreBouton.getText(); 
-        int nbApparition= essaiLettre(lettre);
-        if(getNbLettresRestantes()==0 ){
-             
+        //int nbApparition= motMystere.essaiLettre(lettre); //var motMystere a creer?
+        //if(getNbLettresRestantes()==0 ){
+
         }
 
 
     }
 
-    }
-
+    

@@ -18,7 +18,8 @@ public class ControleurNiveau implements EventHandler<ActionEvent> {
      */
     public ControleurNiveau(MotMystere modelePendu) {
         // A implémenter
-        
+        //fait et a refaire 
+        this.modelePendu= modelePendu;
     }
 
     /**

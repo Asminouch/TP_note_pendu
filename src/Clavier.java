@@ -32,12 +32,11 @@ public class Clavier extends TilePane{
     public Clavier(String touches, EventHandler<ActionEvent> actionTouches) {
         // A implémenter
          
-        this.clavier= new ArrayList<>();
-        this.tailleLigne=8;
-        this.actionTouches= actionTouches;
-        for (int i=0; i<touches.length(); i++){
-            this.clavier.add(touches.get(i));
-        }
+        //this.clavier= new ArrayList<>();
+        //this.tailleLigne=8;
+        //this.actionTouches= actionTouches;
+        //for (int i=0; i<touches.length(); i++){
+            //this.clavier.add(touches.get(i));}
 
         
     }
