@@ -195,8 +195,11 @@ public class Pendu extends Application {
         
     public Alert popUpReglesDuJeu(){
         // A implementer
+        //revoir Regle 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        
+        alert.setTitle("Règle Jeu du Pendu");
+        alert.setHeaderText("Règle Jeu du Pendu");
+        alert.setContentText("Vous devez trouver le mot caché\n Attention au temps et A chaque mauvaise erreurs vous un nouvel élément s'affichera");
         return alert;
     }
     

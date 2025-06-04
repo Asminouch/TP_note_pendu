@@ -27,19 +27,20 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
         this.vuePendu= vuePendu;
     }
 
-    /**
-     * Actions à effectuer lors du clic sur une touche du clavier
-     * Il faut donc: Essayer la lettre, mettre à jour l'affichage et vérifier si la partie est finie
+    /**nc: Essayer la lettre, mettre à jour l'affichage et vérifier si la partie est finie
      * @param actionEvent l'événement
+     * Actions à effectuer lors du clic sur une touche du clavier
+     * Il faut do
      */
     @Override
     public void handle(ActionEvent actionEvent) {// regarder en paralele controllancerpartie
         // A implémenter 
         //getNbEssais() perdu()
         Button lettreBouton = (Button) (actionEvent.getSource());
-        char lettre= lettreBouton.getText();
+        char lettre= lettreBouton.getText(); 
         int nbApparition= essaiLettre(lettre);
-        if(getNbLettresRestantes()==0 ){ 
+        if(getNbLettresRestantes()==0 ){
+             
         }
 
 

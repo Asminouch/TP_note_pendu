@@ -10,12 +10,12 @@ public class ControleurParametres{
         this.pendu =pendu;
     }
     
-    @Override// code du tp3 controle connexion
+    @Override // code du tp3 controle connexion
     public void handle(ActionEvent event){
         Button button = (Button) (event.getSource());
         if (button.getText().contains("D"))
-            this.pendu.afficheFenetre2();
+            {this.pendu.fenetreAccueil();}
         else 
-            this.pendu.afficheFenetre1();
+            {this.pendu.RetourAccueil();}
     }
 }
