@@ -91,6 +91,9 @@ public class Pendu extends Application {
         this.lesImages = new ArrayList<Image>();
         this.chargerImages("./img");
         // A terminer d'implementer
+        this.boutonParametres= new Button();
+        ControleurParametres controleurParam= new ControleurParametres(this);
+        this.boutonParametres.setOnAction(controleurParam);
     }
 
     /**
@@ -135,11 +138,11 @@ public class Pendu extends Application {
     // /**
      // * @return la fenêtre d'accueil sur laquelle on peut choisir les paramètres de jeu
      // */
-    // private Pane fenetreAccueil(){
+    private Pane fenetreAccueil(){
         // A implementer    
         // Pane res = new Pane();
         // return res;
-    // }
+    }
 
     /**
      * charge les images à afficher en fonction des erreurs

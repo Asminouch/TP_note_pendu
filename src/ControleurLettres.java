@@ -35,15 +35,16 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {// regarder en paralele controllancerpartie
         // A implémenter 
-        getNbEssais() perdu()
-        Button lettreBouton = (Button) (actionEvent.getSource());
-        char lettre= lettreBouton.getText(); 
-        int nbApparition= motMystere.essaiLettre(lettre); //var motMystere a creer?
-        if(getNbLettresRestantes()==0 ){
+        //getNbEssais() perdu()
+        //Button lettreBouton = (Button) (actionEvent.getSource());
+        // lettre= lettreBouton.getText(); 
+        //int nbApparition= motMystere.essaiLettre(lettre); //var motMystere a creer?
+        //if(getNbLettresRestantes()==0 ){
 
         }
 
 
     }
+//}
 
     
