@@ -213,7 +213,7 @@ public class MotMystere {
     }
 
     /**
-     * @return un booléen indiquant si le joueur a gangé
+     * @return un booléen indiquant si le joueur a gagné
      */
     public boolean gagne(){
         return this.nbLettresRestantes == 0;

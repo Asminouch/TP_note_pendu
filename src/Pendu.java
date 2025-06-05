@@ -125,11 +125,12 @@ public class Pendu extends Application {
      // * @return la fenêtre de jeu avec le mot crypté, l'image, la barre
      // *         de progression et le clavier
      // */
-    // private Pane fenetreJeu(){
+     private Pane fenetreJeu(){
         // A implementer
-        // Pane res = new Pane();
-        // return res;
-    // }
+        //Pane res = new Pane();
+
+        //return res ;
+     }
 
     // /**
      // * @return la fenêtre d'accueil sur laquelle on peut choisir les paramètres de jeu
@@ -154,6 +155,7 @@ public class Pendu extends Application {
 
     public void modeAccueil(){
         // A implementer
+
     }
     
     public void modeJeu(){
