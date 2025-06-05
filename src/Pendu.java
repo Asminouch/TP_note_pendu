@@ -121,7 +121,7 @@ public class Pendu extends Application {
 
     HBox bouton= new HBox();
 
-    Image imgAccueil = new Image("../img/home.png");
+    Image imgAccueil = new Image("file:/img/home.png");
     ImageView vueAccueil= new ImageView(imgAccueil);
     Button boutonDroite= new Button("Accueil");
     //boutonDroite.setGraphic(vueAccueil);
