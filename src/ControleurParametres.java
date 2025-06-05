@@ -25,8 +25,8 @@ public class ControleurParametres implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event){
         Button button = (Button) (event.getSource());
         if (button.getText().contains("Parametres"))//parametre surment pas ecrit comme cca 
-            {this.pendu.fenetreAccueil();}
+            {this.pendu.modeParametres();}
         else 
-            {this.pendu.fenetreJeu();}
+            {this.pendu.modeJeu();}
     }
 }
