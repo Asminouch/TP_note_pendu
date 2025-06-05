@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,14 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.scene.text.Text;
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.Region;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar.ButtonData ;
-import javafx.scene.control.ButtonType ;
+
 import java.util.List;
 import java.util.Arrays;
 import java.io.File;
@@ -103,6 +101,7 @@ public class Pendu extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setTop(this.titre());
         fenetre.setCenter(this.panelCentral);
+
         return new Scene(fenetre, 800, 1000);
     }
 
@@ -110,12 +109,26 @@ public class Pendu extends Application {
      * @return le panel contenant le titre du jeu
      */
     private Pane titre(){
-        // A implementer          
-        Pane banniere = new Pane();
-        Text text= new Text();
-
+        // A implementer  
+        // enHaut = new BorderPane();       
+        //Pane banniere = new Pane();
+        BorderPane banniere = new BorderPane();//modification Pane en BorderPANE.. pck je trouvais pas comment positionner le truc 
+        Text text= new Text("Jeu du pendu");
+        Font.font("Arial", FontWeight.BOLD, 32);
+        banniere.setLeft(text);
         return banniere;
     }
+
+    HBox bouton= new HBox();
+
+    Image imgAccueil = new Image("../img/home.png");
+    ImageView vueAccueil= new ImageView(imgAccueil);
+    Button boutonDroite= new Button("Accueil");
+    //boutonDroite.setGraphic(vueAccueil);
+
+   // bouton.getChildren().addAll(boutonDroite);
+
+
 
     // /**
      // * @return le panel du chronomètre
