@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "HelloFX", // ici on peut mettre ce qu'on veut, on s'en fiche du nom
+      "request": "launch",
+      "mainClass": "Pendu", //nom de la classe principale qui va se lancer ou nom avec package
+      "vmArgs": "--module-path C:\\Users\\asmah\\Desktop\\logiciel\\javafx-sdk-24.0.1\\lib --add-modules javafx.controls,javafx.fxml"
+    }
+  ]
+}
