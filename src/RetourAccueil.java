@@ -22,6 +22,7 @@ public class RetourAccueil implements EventHandler<ActionEvent> {
      */
     public RetourAccueil(MotMystere modelePendu, Pendu vuePendu) {
         // A implémenter
+
     }
 
 
@@ -32,5 +33,6 @@ public class RetourAccueil implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // A implémenter
+        // popUpPartieEnCour
     }
 }

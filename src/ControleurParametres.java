@@ -7,12 +7,12 @@ import javafx.scene.image.Image;
 
 //Classe crée par moi 
 
-public class ControleurParametres{
+public class ControleurParametres implements EventHandler<ActionEvent>{
 
     //pas à mettre ici mais fait
-    Image imgParam= new image("../img/parametres.png");
+    Image imgParam= new Image("../img/parametres.png");
     ImageView view = new ImageView(imgParam);
-    Button boutonParametres = new Button("Pararmètres");
+    Button boutonParametres = new Button();
     //boutonParametres.setGraphic(view);  //Set graphic quepour les HBOX donc voir comment faire pour les autres Boutons du haut  
     private Pendu pendu;
     
@@ -25,8 +25,8 @@ public class ControleurParametres{
     public void handle(ActionEvent event){
         Button button = (Button) (event.getSource());
         if (button.getText().contains("Parametres"))//parametre surment pas ecrit comme cca 
-            {this.pendu.fenetreAccueil();}
+            {this.pendu.modeParametres();}
         else 
-            {this.pendu.fenetreJeu();}
+            {this.pendu.modeJeu();}
     }
 }
