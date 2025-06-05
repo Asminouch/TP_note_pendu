@@ -112,6 +112,8 @@ public class Pendu extends Application {
     private Pane titre(){
         // A implementer          
         Pane banniere = new Pane();
+        Text text= new Text();
+
         return banniere;
     }
 
