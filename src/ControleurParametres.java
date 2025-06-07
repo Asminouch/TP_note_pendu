@@ -9,10 +9,7 @@ import javafx.scene.image.Image;
 
 public class ControleurParametres implements EventHandler<ActionEvent>{
 
-    //pas à mettre ici mais fait
-    Image imgParam= new Image("../img/parametres.png");
-    ImageView view = new ImageView(imgParam);
-    Button boutonParametres = new Button();
+    
     //boutonParametres.setGraphic(view);  //Set graphic quepour les HBOX donc voir comment faire pour les autres Boutons du haut  
     private Pendu pendu;
     

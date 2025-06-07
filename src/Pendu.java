@@ -14,6 +14,8 @@ import javafx.scene.text.*;
 import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
+
+
 import java.util.Arrays;
 import java.io.File;
 import java.util.ArrayList;
@@ -88,9 +90,12 @@ public class Pendu extends Application {
         this.lesImages = new ArrayList<Image>();
         this.chargerImages("./img");
         // A terminer d'implementer
-        //.boutonParametres= new Button();
-        // controleurParam= new ControleurParametres(this);
-        //this.boutonParametres.setOnAction(controleurParam);
+        this.boutonMaison= new Button();
+        RetourAccueil controleurAccueil= new RetourAccueil(modelePendu, null);
+        this.boutonMaison.setOnAction(controleurAccueil);
+        this.boutonParametres= new Button();
+        ControleurParametres controleurParam= new ControleurParametres(this);
+        this.boutonParametres.setOnAction(controleurParam);
     }
 
     /**
@@ -101,7 +106,7 @@ public class Pendu extends Application {
         fenetre.setTop(this.titre());
         fenetre.setCenter(this.panelCentral);
 
-        return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
+        return new Scene(fenetre, 700, 900); //(fenetre, 800, 1000)
     }
 
     
@@ -117,19 +122,39 @@ public class Pendu extends Application {
         Text text= new Text("Jeu du pendu");
         text.setFont(Font.font("Arial", FontWeight.BOLD, 32));
         banniere.setLeft(text);
-        banniere.setStyle("-fx-background-color: lightblue;");
+        HBox boutons= this.troisBouton();
+        banniere.setRight(boutons);
+        banniere.setStyle("-fx-background-color:rgb(212, 208, 231)");
         return banniere;
     }
-
+    private HBox troisBouton(){
         HBox bouton= new HBox();
 
-        Image imgAccueil = new Image("file:/img/home.png");
+        //image accueil
+        Image imgAccueil = new Image("file:img/home.png");
         ImageView vueAccueil= new ImageView(imgAccueil);
-        this.boutonMaison= new Button("Accueil");
         this.boutonMaison.setGraphic(vueAccueil);
+        vueAccueil.setFitHeight(40);
+        vueAccueil.setFitWidth(40);
+        //image Parametre
+        Image imgParam= new Image("file:img/parametres.png");
+        ImageView viewParam = new ImageView(imgParam);
+        this.boutonParametres.setGraphic(viewParam);
+        viewParam.setFitHeight(40);
+        viewParam.setFitWidth(40);
+        //image Information
+        Image imgInfo= new Image("file:img/info.png");
+        ImageView vueInfo = new ImageView(imgInfo);
+        Button boutonInfo= new Button();
+        boutonInfo.setGraphic(vueInfo);
+        vueInfo.setFitHeight(40);
+        vueInfo.setFitWidth(40);
 
-    // bouton.getChildren().addAll(boutonDroite);
-    
+        bouton.getChildren().addAll(this.boutonMaison, this.boutonParametres, boutonInfo);
+        return bouton;
+
+    //bouton.getChildren().addAll();
+    }
 
     
 
