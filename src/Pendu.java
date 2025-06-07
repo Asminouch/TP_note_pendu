@@ -196,24 +196,24 @@ public class Pendu extends Application {
      // * @return la fenêtre de jeu avec le mot crypté, l'image, la barre
      // *         de progression et le clavier
      // */
-     //private Pane fenetreJeu(){
+    private Pane fenetreJeu(){
         // A implementer
-        //Pane res = new Pane();
+        Pane res = new Pane();
 
-        //return res ;
-     //}
+        return res ;
+    }
 
     // /**
      // * @return la fenêtre d'accueil sur laquelle on peut choisir les paramètres de jeu
      // */
     private Pane fenetreAccueil(){
         VBox centre= new VBox();
-        
-        this.niveaux.add("Facile");
-        this.niveaux.add("Moyen");
-        this.niveaux.add("Difficile");
-        this.niveaux.add("Expert");
-        
+        if(this.niveaux.isEmpty()){
+            this.niveaux.add("Facile");
+            this.niveaux.add("Moyen");
+            this.niveaux.add("Difficile");
+            this.niveaux.add("Expert");
+        }
         ToggleGroup difficulte= new ToggleGroup();
         VBox vboxDifficulte= new VBox();
 

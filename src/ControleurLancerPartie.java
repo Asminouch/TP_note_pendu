@@ -41,9 +41,10 @@ public class ControleurLancerPartie implements EventHandler<ActionEvent> {
         // si la réponse est oui
         if (reponse.isPresent() && reponse.get().equals(ButtonType.YES)){
             System.out.println("Ok !");
-            this.vuePendu.modeJeu();
+            this.vuePendu.modeAccueil();;
         }
         else{
+            this.vuePendu.modeJeu();;
             System.out.println("D'ac !");
             
         }
