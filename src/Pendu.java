@@ -79,6 +79,10 @@ public class Pendu extends Application {
      * le bouton qui permet de (lancer ou relancer une partie
      */ 
     private Button bJouer;
+    /**
+     * le bouton qui permet de voir les règles du jeu
+     */ 
+    private Button boutonInfo;
 
     /**
      * initialise les attributs (créer le modèle, charge les images, crée le chrono ...)
@@ -90,17 +94,23 @@ public class Pendu extends Application {
         this.lesImages = new ArrayList<Image>();
         this.chargerImages("./img");
         // A terminer d'implementer
+        //accueil
         this.boutonMaison= new Button();
         RetourAccueil controleurAccueil= new RetourAccueil(modelePendu, null);
         this.boutonMaison.setOnAction(controleurAccueil);
+        //paramètres
         this.boutonParametres= new Button();
         ControleurParametres controleurParam= new ControleurParametres(this);
         this.boutonParametres.setOnAction(controleurParam);
-
+        //lancer Partie
         this.bJouer= new Button("Lancer une partie");
         ControleurLancerPartie controleurPartie= new ControleurLancerPartie(this.modelePendu,this);
         this.bJouer.setOnAction(controleurPartie);
 
+        this.boutonInfo= new Button();        
+        ControleurInfos controleurInfos=new ControleurInfos(this);
+        this.boutonInfo.setOnAction(controleurInfos);
+        
         this.panelCentral= new BorderPane();
         this.niveaux=new ArrayList<>();
     }
@@ -155,8 +165,8 @@ public class Pendu extends Application {
         //image Information
         Image imgInfo= new Image("file:img/info.png");
         ImageView vueInfo = new ImageView(imgInfo);
-        Button boutonInfo= new Button();
-        boutonInfo.setGraphic(vueInfo);
+        
+        this.boutonInfo.setGraphic(vueInfo);
         vueInfo.setFitHeight(40);
         vueInfo.setFitWidth(40);
 
@@ -165,9 +175,9 @@ public class Pendu extends Application {
         Insets margeBouton = new Insets(20, 5, 20, 5);//ordre: haut, droite, bas, gauche
         HBox.setMargin(this.boutonMaison, margeBouton);
         HBox.setMargin(this.boutonParametres, margeBouton);
-        HBox.setMargin(boutonInfo, margeBouton);
+        HBox.setMargin(this.boutonInfo, margeBouton);
 
-        bouton.getChildren().addAll(this.boutonMaison, this.boutonParametres, boutonInfo);
+        bouton.getChildren().addAll(this.boutonMaison, this.boutonParametres, this.boutonInfo);
         return bouton;
 
     }
@@ -226,11 +236,11 @@ public class Pendu extends Application {
      * @param repertoire répertoire où se trouvent les images
      */
     private void chargerImages(String repertoire){
-        //for (int i=0; i<this.modelePendu.getNbErreursMax()+1; i++){
-            // File file = new File(repertoire+"/pendu"+i+".png");
-            // System.out.println(file.toURI().toString());
-            // this.lesImages.add(new Image(file.toURI().toString()));
-        //}
+        for (int i=0; i<this.modelePendu.getNbErreursMax()+1; i++){
+            File file = new File(repertoire+"/pendu"+i+".png");
+            System.out.println(file.toURI().toString());
+            this.lesImages.add(new Image(file.toURI().toString()));
+        }
     }
 
     public void modeAccueil(){
