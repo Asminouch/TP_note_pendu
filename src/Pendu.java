@@ -15,8 +15,6 @@ import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
 
-//import org.w3c.dom.Text;
-
 import java.util.Arrays;
 import java.beans.VetoableChangeListener;
 import java.io.File;
@@ -104,6 +102,7 @@ public class Pendu extends Application {
         this.bJouer.setOnAction(controleurPartie);
 
         this.panelCentral= new BorderPane();
+        this.niveaux=new ArrayList<>();
     }
 
     /**
@@ -175,10 +174,25 @@ public class Pendu extends Application {
     
     private VBox centre(){
         VBox centre= new VBox();
-        TitledPane nvDifficulte= new TitledPane("Niveau de difficulté";);
+        
+        
+        this.niveaux.add("Facile");
+        this.niveaux.add("Moyen");
+        this.niveaux.add("Difficile");
+        this.niveaux.add("Expert");
+        
+        ToggleGroup difficulte= new ToggleGroup();
+        VBox vboxDifficulte= new VBox();
 
+        for (String nv : this.niveaux ){
+            RadioButton radiobouton= new RadioButton(nv);
+            radiobouton.setToggleGroup(difficulte);
+            vboxDifficulte.getChildren().addAll(radiobouton);
+        }
 
-        centre.getChildren().addAll(this.bJouer);
+        TitledPane nvDifficulte= new TitledPane("Niveau de difficulté", vboxDifficulte);
+        nvDifficulte.setCollapsible(false);
+        centre.getChildren().addAll(this.bJouer, nvDifficulte);
         return centre;
         }
 
