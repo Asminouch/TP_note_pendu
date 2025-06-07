@@ -112,7 +112,7 @@ public class Pendu extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setTop(this.titre());
         fenetre.setCenter(this.panelCentral);
-        fenetre.setCenter(this.centre());
+    
 
         return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
     }
@@ -172,34 +172,7 @@ public class Pendu extends Application {
 
     }
     
-    private VBox centre(){
-        VBox centre= new VBox();
-        
-        
-        this.niveaux.add("Facile");
-        this.niveaux.add("Moyen");
-        this.niveaux.add("Difficile");
-        this.niveaux.add("Expert");
-        
-        ToggleGroup difficulte= new ToggleGroup();
-        VBox vboxDifficulte= new VBox();
-
-        for (String nv : this.niveaux ){
-            RadioButton radiobouton= new RadioButton(nv);
-            radiobouton.setToggleGroup(difficulte);
-            vboxDifficulte.getChildren().addAll(radiobouton);
-        }
-
-        TitledPane nvDifficulte= new TitledPane("Niveau de difficulté", vboxDifficulte);
-        nvDifficulte.setCollapsible(false);
-        centre.getChildren().addAll(this.bJouer, nvDifficulte);
-        return centre;
-        }
-
     
-
-
-
     // /**
      // * @return le panel du chronomètre
      // */
@@ -223,11 +196,30 @@ public class Pendu extends Application {
     // /**
      // * @return la fenêtre d'accueil sur laquelle on peut choisir les paramètres de jeu
      // */
-    //private Pane fenetreAccueil(){
-        // A implementer    
-        // Pane res = new Pane();
-        // return res;
-    //}
+    private Pane fenetreAccueil(){
+        VBox centre= new VBox();
+        
+        this.niveaux.add("Facile");
+        this.niveaux.add("Moyen");
+        this.niveaux.add("Difficile");
+        this.niveaux.add("Expert");
+        
+        ToggleGroup difficulte= new ToggleGroup();
+        VBox vboxDifficulte= new VBox();
+
+        for (String nv : this.niveaux ){
+            RadioButton radiobouton= new RadioButton(nv);
+            radiobouton.setToggleGroup(difficulte);
+            vboxDifficulte.getChildren().addAll(radiobouton);
+        }
+
+        TitledPane nvDifficulte= new TitledPane("Niveau de difficulté", vboxDifficulte);
+        nvDifficulte.setCollapsible(false);
+        centre.getChildren().addAll(this.bJouer, nvDifficulte);
+
+        return centre;
+        
+    }
 
     /**
      * charge les images à afficher en fonction des erreurs
@@ -242,7 +234,7 @@ public class Pendu extends Application {
     }
 
     public void modeAccueil(){
-        // A implementer
+        this.panelCentral.setCenter(fenetreAccueil());
 
     }
     
