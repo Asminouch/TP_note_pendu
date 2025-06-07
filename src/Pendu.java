@@ -15,8 +15,10 @@ import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
 
+//import org.w3c.dom.Text;
 
 import java.util.Arrays;
+import java.beans.VetoableChangeListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -96,6 +98,12 @@ public class Pendu extends Application {
         this.boutonParametres= new Button();
         ControleurParametres controleurParam= new ControleurParametres(this);
         this.boutonParametres.setOnAction(controleurParam);
+
+        this.bJouer= new Button("Lancer une partie");
+        ControleurLancerPartie controleurPartie= new ControleurLancerPartie(this.modelePendu,this);
+        this.bJouer.setOnAction(controleurPartie);
+
+        this.panelCentral= new BorderPane();
     }
 
     /**
@@ -105,8 +113,9 @@ public class Pendu extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setTop(this.titre());
         fenetre.setCenter(this.panelCentral);
+        fenetre.setCenter(this.centre());
 
-        return new Scene(fenetre, 700, 900); //(fenetre, 800, 1000)
+        return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
     }
 
     
@@ -136,12 +145,14 @@ public class Pendu extends Application {
         this.boutonMaison.setGraphic(vueAccueil);
         vueAccueil.setFitHeight(40);
         vueAccueil.setFitWidth(40);
+
         //image Parametre
         Image imgParam= new Image("file:img/parametres.png");
         ImageView viewParam = new ImageView(imgParam);
         this.boutonParametres.setGraphic(viewParam);
         viewParam.setFitHeight(40);
         viewParam.setFitWidth(40);
+
         //image Information
         Image imgInfo= new Image("file:img/info.png");
         ImageView vueInfo = new ImageView(imgInfo);
@@ -150,11 +161,26 @@ public class Pendu extends Application {
         vueInfo.setFitHeight(40);
         vueInfo.setFitWidth(40);
 
+        //bouton.setSpacing(10);
+
+        Insets margeBouton = new Insets(20, 5, 20, 5);//ordre: haut, droite, bas, gauche
+        HBox.setMargin(this.boutonMaison, margeBouton);
+        HBox.setMargin(this.boutonParametres, margeBouton);
+        HBox.setMargin(boutonInfo, margeBouton);
+
         bouton.getChildren().addAll(this.boutonMaison, this.boutonParametres, boutonInfo);
         return bouton;
 
-    //bouton.getChildren().addAll();
     }
+    
+    private VBox centre(){
+        VBox centre= new VBox();
+        TitledPane nvDifficulte= new TitledPane("Niveau de difficulté";);
+
+
+        centre.getChildren().addAll(this.bJouer);
+        return centre;
+        }
 
     
 
