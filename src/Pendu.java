@@ -85,7 +85,8 @@ public class Pendu extends Application {
      */
     @Override
     public void init() {
-        this.modelePendu = new MotMystere("/usr/share/dict/french", 3, 10, MotMystere.FACILE, 10);
+        ///usr/share/dict/french"
+        this.modelePendu = new MotMystere("src/dico.txt", 3, 10, MotMystere.FACILE, 10);
         this.lesImages = new ArrayList<Image>();
         this.chargerImages("./img");
         // A terminer d'implementer
@@ -102,7 +103,7 @@ public class Pendu extends Application {
         fenetre.setTop(this.titre());
         fenetre.setCenter(this.panelCentral);
 
-        return new Scene(fenetre, 800, 1000);
+        return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
     }
 
     /**
@@ -164,11 +165,11 @@ public class Pendu extends Application {
      * @param repertoire répertoire où se trouvent les images
      */
     private void chargerImages(String repertoire){
-        for (int i=0; i<this.modelePendu.getNbErreursMax()+1; i++){
-            File file = new File(repertoire+"/pendu"+i+".png");
-            System.out.println(file.toURI().toString());
-            this.lesImages.add(new Image(file.toURI().toString()));
-        }
+        //for (int i=0; i<this.modelePendu.getNbErreursMax()+1; i++){
+            // File file = new File(repertoire+"/pendu"+i+".png");
+            // System.out.println(file.toURI().toString());
+            // this.lesImages.add(new Image(file.toURI().toString()));
+        //}
     }
 
     public void modeAccueil(){
