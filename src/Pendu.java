@@ -11,8 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
@@ -106,6 +104,8 @@ public class Pendu extends Application {
         return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
     }
 
+    
+
     /**
      * @return le panel contenant le titre du jeu
      */
@@ -115,19 +115,23 @@ public class Pendu extends Application {
         //Pane banniere = new Pane();
         BorderPane banniere = new BorderPane();//modification Pane en BorderPANE.. pck je trouvais pas comment positionner le truc 
         Text text= new Text("Jeu du pendu");
-        Font.font("Arial", FontWeight.BOLD, 32);
+        text.setFont(Font.font("Arial", FontWeight.BOLD, 32));
         banniere.setLeft(text);
+        banniere.setStyle("-fx-background-color: lightblue;");
         return banniere;
     }
 
-    HBox bouton= new HBox();
+        HBox bouton= new HBox();
 
-    Image imgAccueil = new Image("file:/img/home.png");
-    ImageView vueAccueil= new ImageView(imgAccueil);
-    Button boutonDroite= new Button("Accueil");
-    //boutonDroite.setGraphic(vueAccueil);
+        Image imgAccueil = new Image("file:/img/home.png");
+        ImageView vueAccueil= new ImageView(imgAccueil);
+        this.boutonMaison= new Button("Accueil");
+        this.boutonMaison.setGraphic(vueAccueil);
 
-   // bouton.getChildren().addAll(boutonDroite);
+    // bouton.getChildren().addAll(boutonDroite);
+    
+
+    
 
 
 
