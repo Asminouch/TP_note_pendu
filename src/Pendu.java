@@ -152,23 +152,23 @@ public class Pendu extends Application {
         Image imgAccueil = new Image("file:img/home.png");
         ImageView vueAccueil= new ImageView(imgAccueil);
         this.boutonMaison.setGraphic(vueAccueil);
-        vueAccueil.setFitHeight(40);
-        vueAccueil.setFitWidth(40);
+        vueAccueil.setFitHeight(30);
+        vueAccueil.setFitWidth(30);
 
         //image Parametre
         Image imgParam= new Image("file:img/parametres.png");
         ImageView viewParam = new ImageView(imgParam);
         this.boutonParametres.setGraphic(viewParam);
-        viewParam.setFitHeight(40);
-        viewParam.setFitWidth(40);
+        viewParam.setFitHeight(30);
+        viewParam.setFitWidth(30);
 
         //image Information
         Image imgInfo= new Image("file:img/info.png");
         ImageView vueInfo = new ImageView(imgInfo);
         
         this.boutonInfo.setGraphic(vueInfo);
-        vueInfo.setFitHeight(40);
-        vueInfo.setFitWidth(40);
+        vueInfo.setFitHeight(30);
+        vueInfo.setFitWidth(30);
 
         //bouton.setSpacing(10);
 
