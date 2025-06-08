@@ -224,9 +224,13 @@ public class Pendu extends Application {
         this.pg.setProgress(0F);
         this.motCrypte= new Text(this.modelePendu.getMotCrypte());
 
-        vboxGauche.getChildren().addAll(this.dessin,this.motCrypte,this.pg);
+        
         //vboxGauche.setGraphic(vuePendu);
-        return jeu ;
+        vboxGauche.setAlignment(Pos.CENTER_LEFT);
+        vboxGauche.setPadding(new Insets(20));
+        vboxGauche.getChildren().addAll(this.motCrypte,this.dessin,this.pg);
+        jeu.setCenter(vboxGauche);
+        return jeu;
     }
     public int getNiveauPartie(){
         RadioButton selection = (RadioButton) this.grpDifficulte.getSelectedToggle();
