@@ -3,3 +3,8 @@ java
 pendu
 interface
 utilisateur
+enlevant
+zebre
+salut
+salutation
+chocolat

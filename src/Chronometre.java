@@ -23,7 +23,14 @@ public class Chronometre extends Text{
      * le contrôleur associé au chronomètre
      */
     private ControleurChronometre actionTemps;
+    /**
+     * vue du jeu
+     */
+    private Pendu pendu;
 
+    /**
+     * Chronomètre commence a 2 min
+     */
     private final long dureeDebut= 2*60*1000; //=2min
 
     /**
@@ -31,9 +38,9 @@ public class Chronometre extends Text{
      * avec un label initialisé à "0:0:0"
      * Ce constructeur créer la Timeline, la KeyFrame et le contrôleur
      */
-    public Chronometre(){
-        // A implémenter
+    public Chronometre(Pendu p){
         this.setFont(new Font("Arial", 18));
+        this.pendu=p;
 
         this.actionTemps = new ControleurChronometre(this);
         this.keyFrame = new KeyFrame(Duration.seconds(1), this.actionTemps); // rafraîchit chaque seconde
@@ -53,7 +60,11 @@ public class Chronometre extends Text{
         if (tempsRestant <= 0) {
             this.setText("0 min 0 s");
             this.stop();
-            
+            if(this.pendu== null){
+                pendu.popUpMessagePerdu();
+            }
+
+
             return; // Ne pas continuer si le temps est écoulé
         }
 

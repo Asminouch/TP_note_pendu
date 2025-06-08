@@ -25,6 +25,7 @@ import java.util.Timer;
 import java.util.Arrays;
 import java.beans.VetoableChangeListener;
 import java.io.File;
+import javafx.scene.control.Label;
 import java.util.ArrayList;
 
 
@@ -112,7 +113,7 @@ public class Pendu extends Application {
         // A terminer d'implementer
         //accueil
         this.boutonMaison= new Button();
-        RetourAccueil controleurAccueil= new RetourAccueil(modelePendu, null);
+        RetourAccueil controleurAccueil= new RetourAccueil(modelePendu, this);
         this.boutonMaison.setOnAction(controleurAccueil);
         //paramètres
         this.boutonParametres= new Button();
@@ -139,7 +140,7 @@ public class Pendu extends Application {
         EventHandler<ActionEvent> actionClavier = new ControleurLettres(this.modelePendu, this);
 
         this.clavier= new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", actionClavier);
-        this.chrono= new Chronometre();
+        this.chrono= new Chronometre(this);
         this.leNiveau= new Text();
     }
     public MotMystere getModelPendu(){
@@ -152,6 +153,7 @@ public class Pendu extends Application {
     private Scene laScene(){
         BorderPane fenetre = new BorderPane();
         fenetre.setTop(this.titre());
+
         fenetre.setCenter(this.panelCentral);
         
     
@@ -165,15 +167,16 @@ public class Pendu extends Application {
      * @return le panel contenant le titre du jeu
      */
     private Pane titre(){
-        // A implementer  
         // enHaut = new BorderPane();       
         //Pane banniere = new Pane();
-        BorderPane banniere = new BorderPane();//modification Pane en BorderPANE.. pck je trouvais pas comment positionner le truc 
+        BorderPane banniere = new BorderPane();
         Text text= new Text("Jeu du pendu");
         text.setFont(Font.font("Arial", FontWeight.BOLD, 32));
         banniere.setLeft(text);
         HBox boutons= this.troisBouton();
         banniere.setRight(boutons);
+        banniere.setAlignment(text,Pos.CENTER_LEFT);
+        banniere.setPadding(new Insets(20));
         banniere.setStyle("-fx-background-color:rgb(212, 208, 231)");
         return banniere;
     }
@@ -201,8 +204,6 @@ public class Pendu extends Application {
         this.boutonInfo.setGraphic(vueInfo);
         vueInfo.setFitHeight(30);
         vueInfo.setFitWidth(30);
-
-        //bouton.setSpacing(10);
 
         Insets margeBouton = new Insets(20, 5, 20, 5);//ordre: haut, droite, bas, gauche
         HBox.setMargin(this.boutonMaison, margeBouton);
@@ -310,6 +311,7 @@ public class Pendu extends Application {
 
         TitledPane nvDifficulte= new TitledPane("Niveau de difficulté", vboxDifficulte);
         nvDifficulte.setCollapsible(false);
+        centre.setPadding(new Insets(20));
         centre.getChildren().addAll(this.bJouer, nvDifficulte);
 
         return centre;
@@ -329,6 +331,7 @@ public class Pendu extends Application {
     }
 
     public void modeAccueil(){
+        this.boutonMaison.setDisable(false);
         this.panelCentral.setCenter(fenetreAccueil());
 
     }
@@ -349,7 +352,7 @@ public class Pendu extends Application {
         if (this.chrono != null) {
             this.chrono.stop();;
         }
-        this.chrono = new Chronometre();
+        this.chrono = new Chronometre(this);
         this.chrono.start();
 
     this.modeJeu();
