@@ -143,6 +143,9 @@ public class Pendu extends Application {
         this.chrono= new Chronometre(this);
         this.leNiveau= new Text();
     }
+    /**
+     * @return  le modele du jeu
+     */
     public MotMystere getModelPendu(){
         return this.modelePendu;
     }
@@ -155,9 +158,7 @@ public class Pendu extends Application {
         fenetre.setTop(this.titre());
 
         fenetre.setCenter(this.panelCentral);
-        
     
-
         return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
     }
 
@@ -180,6 +181,10 @@ public class Pendu extends Application {
         banniere.setStyle("-fx-background-color:rgb(212, 208, 231)");
         return banniere;
     }
+    /**
+     * Crée une barre horizontale contenant les 3 boutons: Accueil, Paramètre, Info
+     * @return une HBox avec les boutons.
+     */
     private HBox troisBouton(){
         HBox bouton= new HBox();
 
@@ -276,6 +281,10 @@ public class Pendu extends Application {
 
         return jeu;
     }
+    /**
+     * le niveau de difficulté séléctionné par l'utilisateurs.
+     * @return un entier correspondant à la difficulté choisie par l'utilisateur
+     */
     public int getNiveauPartie(){
         RadioButton selection = (RadioButton) this.grpDifficulte.getSelectedToggle();
         if (selection ==null) return MotMystere.FACILE; // par défaut
@@ -329,22 +338,31 @@ public class Pendu extends Application {
             this.lesImages.add(new Image(file.toURI().toString()));
         }
     }
-
+    /**
+     * Active le mode Accueil
+     */
     public void modeAccueil(){
         this.boutonMaison.setDisable(false);
         this.panelCentral.setCenter(fenetreAccueil());
 
     }
-    
+    /**
+     * Active le mode jeu
+     */
     public void modeJeu(){
         this.panelCentral.setCenter(fenetreJeu());
     }
-    
+
+    /**
+     * Active le mode Paramètre
+     */
     public void modeParametres(){
         // A implémenter
     }
 
-    /** lance une partie */
+    /**
+    * lance une nouvelle partie, choisi un nouveau mot et redémarre le chrono
+    */
     public void lancePartie(){
         this.modelePendu.setMotATrouver();
         this.clavier.desactiveTouches(null);
@@ -375,6 +393,10 @@ public class Pendu extends Application {
         return this.chrono; 
     }
 //cours 4
+    /**
+     * Affiche une boite de confirmation si une partie est en cours
+     * @return une boite de dialogue de type Confirmation
+     */
     public Alert popUpPartieEnCours(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"La partie est en cours!\n Etes-vous sûr de l'interrompre ?", ButtonType.YES, ButtonType.NO);
         alert.setTitle("Attention");
@@ -382,10 +404,11 @@ public class Pendu extends Application {
         
         return alert;
     }
-        
+    /**
+     * Affiche une boite avec les règle du Pendu
+     * @return une boite de dialogue de type INFORMATION
+     */   
     public Alert popUpReglesDuJeu(){
-        // A implementer
-        //revoir Regle 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Règle Jeu du Pendu");
         alert.setHeaderText("Règle Jeu du Pendu");
@@ -393,19 +416,23 @@ public class Pendu extends Application {
         return alert;
     }
     
+    /**
+     * Affiche un message de victoire
+     * @return une boite de dialogue de type Information
+     */
     public Alert popUpMessageGagne(){
-        // A implementer
-        //fait
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION); 
         alert.setTitle("Jeu du Pendu");
         alert.setHeaderText("Vous avez gagné :)");
         alert.setContentText("Bravo ! Vous avez gagné !");
         return alert;
     }
-    
-    public Alert popUpMessagePerdu(){
-        // A implementer
-        //fait    
+    /**
+     * Affiche un message de défaite
+     * @return une boite de dialogue de type Information
+     */
+    public Alert popUpMessagePerdu(){   
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Jeu du Pendu");
         alert.setHeaderText("Vous avez perdu :(");
