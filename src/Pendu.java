@@ -15,6 +15,8 @@ import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
 
+
+
 import java.util.Arrays;
 import java.beans.VetoableChangeListener;
 import java.io.File;
@@ -83,6 +85,11 @@ public class Pendu extends Application {
      * le bouton qui permet de voir les règles du jeu
      */ 
     private Button boutonInfo;
+    /**
+     * le bouton qui permet de voir les règles du jeu
+     */ 
+    private ToggleGroup grpDifficulte;
+
 
     /**
      * initialise les attributs (créer le modèle, charge les images, crée le chrono ...)
@@ -113,6 +120,10 @@ public class Pendu extends Application {
         
         this.panelCentral= new BorderPane();
         this.niveaux=new ArrayList<>();
+        this.grpDifficulte= new ToggleGroup();
+        this.pg= new ProgressBar();
+
+        
     }
 
     /**
@@ -198,10 +209,37 @@ public class Pendu extends Application {
      // */
     private Pane fenetreJeu(){
         // A implementer
-        Pane res = new Pane();
+        BorderPane jeu= new BorderPane();
 
-        return res ;
+        VBox vboxGauche= new VBox();
+        Text motATrouver=this.motCrypte;
+        
+
+
+
+         //image Pendu en cours
+        int i=0;
+        //Image imgPendu = new Image("file:img/pendu"+ i+".png");
+        this.dessin = new ImageView(this.lesImages.get(0));
+        this.pg.setProgress(0F);
+        this.motCrypte= new Text(this.modelePendu.getMotCrypte());
+
+        vboxGauche.getChildren().addAll(this.dessin,this.motCrypte,this.pg);
+        //vboxGauche.setGraphic(vuePendu);
+        return jeu ;
     }
+    public int getNiveauPartie(){
+        RadioButton selection = (RadioButton) this.grpDifficulte.getSelectedToggle();
+        if (selection ==null) return MotMystere.FACILE; // par défaut
+        switch (selection.getText()) {
+            case"Facile":return MotMystere.FACILE;
+            case"Moyen":return MotMystere.MOYEN;
+            case"Difficile": return MotMystere.DIFFICILE;
+            case"Expert": return MotMystere.EXPERT;
+            default: return MotMystere.FACILE;
+    }
+}
+    
 
     // /**
      // * @return la fenêtre d'accueil sur laquelle on peut choisir les paramètres de jeu
@@ -214,12 +252,12 @@ public class Pendu extends Application {
             this.niveaux.add("Difficile");
             this.niveaux.add("Expert");
         }
-        ToggleGroup difficulte= new ToggleGroup();
+        
         VBox vboxDifficulte= new VBox();
 
         for (String nv : this.niveaux ){
             RadioButton radiobouton= new RadioButton(nv);
-            radiobouton.setToggleGroup(difficulte);
+            radiobouton.setToggleGroup(this.grpDifficulte);
             vboxDifficulte.getChildren().addAll(radiobouton);
         }
 
@@ -249,7 +287,7 @@ public class Pendu extends Application {
     }
     
     public void modeJeu(){
-        // A implementer
+        this.panelCentral.setCenter(fenetreJeu());
     }
     
     public void modeParametres(){

@@ -43,10 +43,12 @@ public class ControleurLancerPartie implements EventHandler<ActionEvent> {
             System.out.println("Ok !");
             this.vuePendu.modeAccueil();;
         }
-        else{
-            this.vuePendu.modeJeu();;
-            System.out.println("D'ac !");
+
+        int nvChoisi= this.vuePendu.getNiveauPartie();
+
+        this.vuePendu.modeJeu();;
+        System.out.println("D'ac !");
             
-        }
+        
     }
 }
