@@ -31,35 +31,47 @@ public class Chronometre extends Text{
      */
     public Chronometre(){
         // A implémenter
-    }
+        this.setFont(new Font("Arial", 24));
 
+        this.actionTemps = new ControleurChronometre(this);
+        this.keyFrame = new KeyFrame(Duration.seconds(1), this.actionTemps); // rafraîchit chaque seconde
+        this.timeline = new Timeline(this.keyFrame);
+        this.timeline.setCycleCount(Animation.INDEFINITE);
+
+    }
+ 
     /**
      * Permet au controleur de mettre à jour le text
      * la durée est affichée sous la forme m:s
      * @param tempsMillisec la durée depuis à afficher
      */
     public void setTime(long tempsMillisec){
-        // A implémenter
+        long totalSeconde= tempsMillisec/1000;
+        long min= totalSeconde/60;
+        long sec= totalSeconde % 60;
+        
+        this.setText(min+" min "+ sec +" s");
     }
 
     /**
      * Permet de démarrer le chronomètre
      */
     public void start(){
-        // A implémenter
+        this.actionTemps.reset();
+        this.timeline.play();
     }
 
     /**
      * Permet d'arrêter le chronomètre
      */
     public void stop(){
-        // A implémenter
+        this.timeline.stop();
     }
 
     /**
      * Permet de remettre le chronomètre à 0
      */
     public void resetTime(){
-        // A implémenter
+        this.actionTemps.reset();
     }
 }

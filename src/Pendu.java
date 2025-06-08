@@ -130,11 +130,8 @@ public class Pendu extends Application {
 
         EventHandler<ActionEvent> actionClavier = new ControleurLettres(this.modelePendu, this);
 
-        //Button active= (Button) e.getSource();
-        //String lettre = active.getText();
-        this.leNiveau= new Text();
         this.clavier= new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", actionClavier);
-
+        this.chrono= new Chronometre();
         
     }
     public MotMystere getModelPendu(){
@@ -268,7 +265,7 @@ public class Pendu extends Application {
         TitledPane chrono= new TitledPane();
         chrono.setCollapsible(false);
 
-        vboxDroite.getChildren().addAll(niveauPartie,nvMot);
+        vboxDroite.getChildren().addAll(niveauPartie,this.chrono,nvMot);
         jeu.setLeft(vboxGauche);
         jeu.setRight(vboxDroite);
 
