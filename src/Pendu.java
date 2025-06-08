@@ -11,13 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
-import javafx.scene.text.Text;
 import javafx.scene.control.ButtonBar.ButtonData ;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import java.util.List;
 import java.util.Timer;
+
 
 //import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
@@ -145,6 +145,7 @@ public class Pendu extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setTop(this.titre());
         fenetre.setCenter(this.panelCentral);
+        
     
 
         return new Scene(fenetre, 500, 700); //(fenetre, 800, 1000)
@@ -323,7 +324,17 @@ public class Pendu extends Application {
 
     /** lance une partie */
     public void lancePartie(){
-        // A implementer
+        this.modelePendu.setMotATrouver();
+        this.clavier.desactiveTouches(null);
+        
+        // if (this.chrono != null) {
+        //     this.chrono.arreter();
+        // }
+        // this.chrono = new Chronometre();
+        // this.chrono.lancer();
+
+    this.modeJeu();
+
     }
 
     /**
@@ -376,7 +387,7 @@ public class Pendu extends Application {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Jeu du Pendu");
         alert.setHeaderText("Vous avez perdu :(");
-        alert.setContentText("Vous avez perdu\nLe mot à trouver était "+ this.motCrypte);
+        alert.setContentText("Vous avez perdu\nLe mot à trouver était "+ this.modelePendu.getMotATrouve());
         return alert;
     }
 

@@ -58,11 +58,13 @@ public class Clavier extends TilePane{
     public void desactiveTouches(Set<String> touchesDesactivees){
         for(Button touche: this.clavier){
             String lettre= touche.getText();
-            if(touchesDesactivees.contains(lettre)){
-                touche.setDisable(true);
-            }else{
-                touche.setDisable(false);
-            }
+            boolean desactive= (touchesDesactivees!= null) && touchesDesactivees.contains(lettre);
+            touche.setDisable(desactive);
+            // if(touchesDesactivees== null){
+            //     touche.setDisable(false);
+            // }else{
+            //     touche.setDisable(touchesDesactivees.contains(lettre));
+            // }
         }
         
          

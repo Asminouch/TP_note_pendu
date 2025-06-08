@@ -42,10 +42,12 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
         lettreBouton.setDisable(true);
         int nbApparition= this.modelePendu.essaiLettre(lettre.charAt(0));
         this.vuePendu.motCrypte.setText(this.modelePendu.getMotCrypte());
-        double progression =(double) this.modelePendu.getNbErreursRestants() / this.modelePendu.getNbErreursMax();
+        
+        int nbErreur= this.modelePendu.getNbErreursMax()-this.modelePendu.getNbErreursRestants();
+        double progression =(double) nbErreur / this.modelePendu.getNbErreursMax();
         this.vuePendu.pg.setProgress(progression);
 
-        Image pendu =this.vuePendu.lesImages.get(this.modelePendu.getNbErreursRestants());
+        Image pendu =this.vuePendu.lesImages.get(nbErreur);
         this.vuePendu.dessin.setImage(pendu);
 
         if(this.modelePendu.perdu()) {
