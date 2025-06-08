@@ -30,8 +30,7 @@ public class Clavier extends TilePane{
      * @param tailleLigne nombre de touches par ligne
      */
     public Clavier(String touches, EventHandler<ActionEvent> actionTouches) {
-        // A implémenter
-
+  
         this.clavier= new ArrayList<>();
         this.actionTouches= actionTouches;
         this.tailleLigne= 8;
@@ -48,7 +47,6 @@ public class Clavier extends TilePane{
         this.setVgap(5);
         this.setAlignment(Pos.CENTER);
         
-        
     }
 
     /**
@@ -60,11 +58,7 @@ public class Clavier extends TilePane{
             String lettre= touche.getText();
             boolean desactive= (touchesDesactivees!= null) && touchesDesactivees.contains(lettre);
             touche.setDisable(desactive);
-            // if(touchesDesactivees== null){
-            //     touche.setDisable(false);
-            // }else{
-            //     touche.setDisable(touchesDesactivees.contains(lettre));
-            // }
+
         }
         
          

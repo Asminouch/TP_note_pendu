@@ -23,7 +23,6 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      * @param vuePendu vue du jeu
      */
     ControleurLettres(MotMystere modelePendu, Pendu vuePendu){
-        // A implémenter  fait
         this.modelePendu= modelePendu;
         this.vuePendu= vuePendu;
     }
@@ -34,9 +33,7 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      * Il faut do
      */
     @Override
-    public void handle(ActionEvent actionEvent) {// regarder en paralele controllancerpartie
-        // A implémenter 
-        //getNbEssais() perdu()
+    public void handle(ActionEvent actionEvent) {
         Button lettreBouton = (Button) (actionEvent.getSource());
         String lettre= lettreBouton.getText(); 
         lettreBouton.setDisable(true);
