@@ -14,9 +14,7 @@ import javafx.scene.text.*;
 import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
-
-
-
+import java.util.Timer;
 import java.util.Arrays;
 import java.beans.VetoableChangeListener;
 import java.io.File;
@@ -211,25 +209,35 @@ public class Pendu extends Application {
         // A implementer
         BorderPane jeu= new BorderPane();
 
-        VBox vboxGauche= new VBox();
+        VBox vboxGauche= new VBox(10); //5= espacement
         Text motATrouver=this.motCrypte;
         
-
-
-
-         //image Pendu en cours
+        //image Pendu en cours
         int i=0;
         //Image imgPendu = new Image("file:img/pendu"+ i+".png");
         this.dessin = new ImageView(this.lesImages.get(0));
         this.pg.setProgress(0F);
         this.motCrypte= new Text(this.modelePendu.getMotCrypte());
+        this.motCrypte.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        
 
         
         //vboxGauche.setGraphic(vuePendu);
-        vboxGauche.setAlignment(Pos.CENTER_LEFT);
+        vboxGauche.setAlignment(Pos.TOP_CENTER);
         vboxGauche.setPadding(new Insets(20));
         vboxGauche.getChildren().addAll(this.motCrypte,this.dessin,this.pg);
-        jeu.setCenter(vboxGauche);
+        
+        VBox vboxDroite= new VBox();
+        Button nvMot= new Button("Nouveau mot");
+
+        //Timer timer= new Timer();
+        //TitledPane chrono= new TitledPane("Chronomètre", vboxDroite);
+        //chrono.setCollapsible(false);
+        vboxDroite.getChildren().addAll(nvMot);
+
+        jeu.setLeft(vboxGauche);
+        jeu.setRight(vboxDroite);
+
         return jeu;
     }
     public int getNiveauPartie(){
