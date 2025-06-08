@@ -53,6 +53,7 @@ public class Chronometre extends Text{
         if (tempsRestant <= 0) {
             this.setText("0 min 0 s");
             this.stop();
+            
             return; // Ne pas continuer si le temps est écoulé
         }
 

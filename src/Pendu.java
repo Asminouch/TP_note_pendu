@@ -91,9 +91,13 @@ public class Pendu extends Application {
      */ 
     private Button boutonInfo;
     /**
-     * le bouton qui permet de voir les règles du jeu
+     * Permet de grouper les radios boutons
      */ 
     private ToggleGroup grpDifficulte;
+    /**
+     * le bouton qui permet de changer de mot durant une partie
+     */ 
+    private Button nvMot;
 
 
     /**
@@ -118,6 +122,10 @@ public class Pendu extends Application {
         this.bJouer= new Button("Lancer une partie");
         ControleurLancerPartie controleurPartie= new ControleurLancerPartie(this.modelePendu,this);
         this.bJouer.setOnAction(controleurPartie);
+
+        this.nvMot= new Button("Nouveau mot");
+        ControleurLancerPartie controleurChangerMot = new ControleurLancerPartie(this.modelePendu,this);
+        this.nvMot.setOnAction(controleurChangerMot);
 
         this.boutonInfo= new Button();        
         ControleurInfos controleurInfos=new ControleurInfos(this);
@@ -241,8 +249,8 @@ public class Pendu extends Application {
         vboxGauche.setPadding(new Insets(20));
         vboxGauche.getChildren().addAll(this.motCrypte,this.dessin,this.pg, this.clavier);
         
-        VBox vboxDroite= new VBox();
-        Button nvMot= new Button("Nouveau mot");
+        VBox vboxDroite= new VBox(10);
+        
 
         if(this.getNiveauPartie()==0){
             this.leNiveau.setText("Facile");}
@@ -259,6 +267,8 @@ public class Pendu extends Application {
         Label niveauPartie= new Label("Niveau "+this.leNiveau.getText());
         niveauPartie.setFont(Font.font("Arial", 20));
 
+        vboxDroite.setAlignment(Pos.TOP_LEFT);
+        vboxDroite.setPadding(new Insets(20));
         vboxDroite.getChildren().addAll(niveauPartie,this.leChrono(),nvMot);
         jeu.setLeft(vboxGauche);
         jeu.setRight(vboxDroite);
@@ -376,7 +386,7 @@ public class Pendu extends Application {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Règle Jeu du Pendu");
         alert.setHeaderText("Règle Jeu du Pendu");
-        alert.setContentText("Vous devez trouver le mot caché\n Attention au temps et A chaque mauvaise\n erreurs vous un nouvel élément s'affichera");
+        alert.setContentText("Vous devez trouver le mot caché\nchaque lettre à trouver correspond à un trait.\nSi la lettre séléctioné n'est pas dans le mot\nalors une partie du pendu se dessine.\nSi le dessin est complet alors vous avez perdu,\nvous pouver voir ou vous en êtes grâce à la bar de progression.");
         return alert;
     }
     
