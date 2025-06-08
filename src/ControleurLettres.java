@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 
 /**
  * Controleur du clavier
@@ -36,15 +37,28 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {// regarder en paralele controllancerpartie
         // A implémenter 
         //getNbEssais() perdu()
-        //Button lettreBouton = (Button) (actionEvent.getSource());
-        // lettre= lettreBouton.getText(); 
-        //int nbApparition= motMystere.essaiLettre(lettre); //var motMystere a creer?
-        //if(getNbLettresRestantes()==0 ){
+        Button lettreBouton = (Button) (actionEvent.getSource());
+        String lettre= lettreBouton.getText(); 
+        lettreBouton.setDisable(true);
+        int nbApparition= this.modelePendu.essaiLettre(lettre.charAt(0));
+        this.vuePendu.motCrypte.setText(this.modelePendu.getMotCrypte());
+        double progression =(double) this.modelePendu.getNbErreursRestants() / this.modelePendu.getNbErreursMax();
+        this.vuePendu.pg.setProgress(progression);
 
+        Image pendu =this.vuePendu.lesImages.get(this.modelePendu.getNbErreursRestants());
+        this.vuePendu.dessin.setImage(pendu);
+
+        if(this.modelePendu.perdu()) {
+            Alert perdu = this.vuePendu.popUpMessagePerdu();
+            perdu.showAndWait();
+            this.vuePendu.modeAccueil();
+        }else if(this.modelePendu.gagne()) {
+            Alert gagne = this.vuePendu.popUpMessageGagne();
+            gagne.showAndWait();
+            this.vuePendu.modeAccueil();
         }
 
-
     }
-//}
+}
 
     

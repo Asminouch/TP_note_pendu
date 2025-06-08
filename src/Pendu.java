@@ -11,10 +11,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
+import javafx.scene.text.Text;
 import javafx.scene.control.ButtonBar.ButtonData ;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import java.util.List;
 import java.util.Timer;
+
+//import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
+
 import java.util.Arrays;
 import java.beans.VetoableChangeListener;
 import java.io.File;
@@ -32,7 +39,7 @@ public class Pendu extends Application {
     /**
      * Liste qui contient les images du jeu
      */
-    private ArrayList<Image> lesImages;
+    public ArrayList<Image> lesImages;
     /**
      * Liste qui contient les noms des niveaux
      */    
@@ -42,15 +49,15 @@ public class Pendu extends Application {
     /**
      * le dessin du pendu
      */
-    private ImageView dessin;
+    public ImageView dessin;
     /**
      * le mot à trouver avec les lettres déjà trouvé
      */
-    private Text motCrypte;
+    public Text motCrypte;
     /**
      * la barre de progression qui indique le nombre de tentatives
      */
-    private ProgressBar pg;
+    public ProgressBar pg;
     /**
      * le clavier qui sera géré par une classe à implémenter
      */
@@ -120,6 +127,13 @@ public class Pendu extends Application {
         this.niveaux=new ArrayList<>();
         this.grpDifficulte= new ToggleGroup();
         this.pg= new ProgressBar();
+
+        EventHandler<ActionEvent> actionClavier = new ControleurLettres(this.modelePendu, this);
+
+        //Button active= (Button) e.getSource();
+        //String lettre = active.getText();
+
+        this.clavier= new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", actionClavier);
 
         
     }
@@ -206,7 +220,7 @@ public class Pendu extends Application {
      // *         de progression et le clavier
      // */
     private Pane fenetreJeu(){
-        // A implementer
+        
         BorderPane jeu= new BorderPane();
 
         VBox vboxGauche= new VBox(10); //5= espacement
@@ -219,13 +233,14 @@ public class Pendu extends Application {
         this.pg.setProgress(0F);
         this.motCrypte= new Text(this.modelePendu.getMotCrypte());
         this.motCrypte.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        
 
         
-        //vboxGauche.setGraphic(vuePendu);
+        //Button active= (Button) e.getSource();
+        //String lettre = active.getText();
+
         vboxGauche.setAlignment(Pos.TOP_CENTER);
         vboxGauche.setPadding(new Insets(20));
-        vboxGauche.getChildren().addAll(this.motCrypte,this.dessin,this.pg);
+        vboxGauche.getChildren().addAll(this.motCrypte,this.dessin,this.pg, this.clavier);
         
         VBox vboxDroite= new VBox();
         Button nvMot= new Button("Nouveau mot");
