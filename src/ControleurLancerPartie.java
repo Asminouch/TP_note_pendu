@@ -44,7 +44,7 @@ public class ControleurLancerPartie implements EventHandler<ActionEvent> {
         }
 
         int nvChoisi= this.vuePendu.getNiveauPartie();
-        //this.vuePendu.modelePendu.setNiveau(nvChoisi);
+        this.vuePendu.getModelPendu().setNiveau(nvChoisi);
         this.vuePendu.lancePartie();
         System.out.println("D'ac !");
             

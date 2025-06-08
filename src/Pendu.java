@@ -132,10 +132,13 @@ public class Pendu extends Application {
 
         //Button active= (Button) e.getSource();
         //String lettre = active.getText();
-
+        this.leNiveau= new Text();
         this.clavier= new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", actionClavier);
 
         
+    }
+    public MotMystere getModelPendu(){
+        return this.modelePendu;
     }
 
     /**
@@ -246,11 +249,26 @@ public class Pendu extends Application {
         VBox vboxDroite= new VBox();
         Button nvMot= new Button("Nouveau mot");
 
-        //Timer timer= new Timer();
-        //TitledPane chrono= new TitledPane("Chronomètre", vboxDroite);
-        //chrono.setCollapsible(false);
-        vboxDroite.getChildren().addAll(nvMot);
+        if(this.getNiveauPartie()==0){
+            this.leNiveau.setText("Facile");}
+        else if(this.getNiveauPartie()==1){
+            this.leNiveau.setText("Moyen");}
+        else if(this.getNiveauPartie()==2){
+            this.leNiveau.setText("Diffcile");}
+        else if(this.getNiveauPartie()==3){
+            this.leNiveau.setText("Expert");}
+        else{
+            this.leNiveau.setText("Facile");
+        }
+       
+        Label niveauPartie= new Label("Niveau "+this.leNiveau.getText());
+        niveauPartie.setFont(Font.font("Arial", 20));
 
+        Timer timer= new Timer();
+        TitledPane chrono= new TitledPane();
+        chrono.setCollapsible(false);
+
+        vboxDroite.getChildren().addAll(niveauPartie,nvMot);
         jeu.setLeft(vboxGauche);
         jeu.setRight(vboxDroite);
 
