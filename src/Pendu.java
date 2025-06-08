@@ -132,7 +132,7 @@ public class Pendu extends Application {
 
         this.clavier= new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", actionClavier);
         this.chrono= new Chronometre();
-        
+        this.leNiveau= new Text();
     }
     public MotMystere getModelPendu(){
         return this.modelePendu;
@@ -207,14 +207,16 @@ public class Pendu extends Application {
     }
     
     
-    // /**
-     // * @return le panel du chronomètre
-     // */
-    // private TitledPane leChrono(){
-        // A implementer
-        // TitledPane res = new TitledPane();
-        // return res;
-    // }
+    /**
+     * @return le panel du chronomètre
+     */
+    private TitledPane leChrono(){
+        //A implementer
+        VBox chrono= new VBox();
+        TitledPane leChrono = new TitledPane("Chronomètre",this.chrono );
+        leChrono.setCollapsible(false);
+        return leChrono;
+    }
 
     // /**
      // * @return la fenêtre de jeu avec le mot crypté, l'image, la barre
@@ -234,10 +236,6 @@ public class Pendu extends Application {
         this.pg.setProgress(0F);
         this.motCrypte= new Text(this.modelePendu.getMotCrypte());
         this.motCrypte.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-
-        
-        //Button active= (Button) e.getSource();
-        //String lettre = active.getText();
 
         vboxGauche.setAlignment(Pos.TOP_CENTER);
         vboxGauche.setPadding(new Insets(20));
@@ -261,11 +259,7 @@ public class Pendu extends Application {
         Label niveauPartie= new Label("Niveau "+this.leNiveau.getText());
         niveauPartie.setFont(Font.font("Arial", 20));
 
-        Timer timer= new Timer();
-        TitledPane chrono= new TitledPane();
-        chrono.setCollapsible(false);
-
-        vboxDroite.getChildren().addAll(niveauPartie,this.chrono,nvMot);
+        vboxDroite.getChildren().addAll(niveauPartie,this.leChrono(),nvMot);
         jeu.setLeft(vboxGauche);
         jeu.setRight(vboxDroite);
 
@@ -342,11 +336,11 @@ public class Pendu extends Application {
         this.modelePendu.setMotATrouver();
         this.clavier.desactiveTouches(null);
         
-        // if (this.chrono != null) {
-        //     this.chrono.arreter();
-        // }
-        // this.chrono = new Chronometre();
-        // this.chrono.lancer();
+        if (this.chrono != null) {
+            this.chrono.stop();;
+        }
+        this.chrono = new Chronometre();
+        this.chrono.start();
 
     this.modeJeu();
 
@@ -364,8 +358,8 @@ public class Pendu extends Application {
      * @return le chronomètre du jeu
      */
     public Chronometre getChrono(){
-        // A implémenter
-        return null; // A enlever
+        
+        return this.chrono; 
     }
 //cours 4
     public Alert popUpPartieEnCours(){
@@ -382,7 +376,7 @@ public class Pendu extends Application {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Règle Jeu du Pendu");
         alert.setHeaderText("Règle Jeu du Pendu");
-        alert.setContentText("Vous devez trouver le mot caché\n Attention au temps et A chaque mauvaise erreurs vous un nouvel élément s'affichera");
+        alert.setContentText("Vous devez trouver le mot caché\n Attention au temps et A chaque mauvaise\n erreurs vous un nouvel élément s'affichera");
         return alert;
     }
     

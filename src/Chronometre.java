@@ -24,6 +24,8 @@ public class Chronometre extends Text{
      */
     private ControleurChronometre actionTemps;
 
+    private final long dureeDebut= 2*60*1000; //=2min
+
     /**
      * Constructeur permettant de créer le chronomètre
      * avec un label initialisé à "0:0:0"
@@ -31,7 +33,7 @@ public class Chronometre extends Text{
      */
     public Chronometre(){
         // A implémenter
-        this.setFont(new Font("Arial", 24));
+        this.setFont(new Font("Arial", 18));
 
         this.actionTemps = new ControleurChronometre(this);
         this.keyFrame = new KeyFrame(Duration.seconds(1), this.actionTemps); // rafraîchit chaque seconde
@@ -46,11 +48,19 @@ public class Chronometre extends Text{
      * @param tempsMillisec la durée depuis à afficher
      */
     public void setTime(long tempsMillisec){
-        long totalSeconde= tempsMillisec/1000;
-        long min= totalSeconde/60;
-        long sec= totalSeconde % 60;
-        
-        this.setText(min+" min "+ sec +" s");
+        long tempsRestant = dureeDebut - tempsMillisec;
+
+        if (tempsRestant <= 0) {
+            this.setText("0 min 0 s");
+            this.stop();
+            return; // Ne pas continuer si le temps est écoulé
+        }
+
+        long totalSeconde = tempsRestant / 1000;
+        long min = totalSeconde / 60;
+        long sec = totalSeconde % 60;
+
+        this.setText(min + " min " + sec + " s");
     }
 
     /**
